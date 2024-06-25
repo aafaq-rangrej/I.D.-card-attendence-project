@@ -42,7 +42,7 @@ for i in reg_list:
     student_file.write(str(i) + "\n")
 student_file.close()
 
-# Serialize and save the objects to a file
+# Serialize and save the first objects to a file
 with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl', 'wb') as f:
     pickle.dump(reg_list, f)  #legacy code to create first object in path_binary file 
 
