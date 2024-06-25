@@ -15,7 +15,7 @@ with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered stud
 
 # Print the loaded objects
 for person in students:
-    print(person.name)
+    print(person.name , person.major , person.year , person.time , person.id)
 
 #print(students[0].name)
 
@@ -28,7 +28,7 @@ def attendence(entered_id):
     students[index_in_students] = time
     print("New attencdence: " + str(students[index_in_students]))
 
-attendence(int(input("Entre your student id for attendence: ")))
+#attendence(int(input("Entre your student id for attendence: ")))
 
 '''# Serialize the updated list back to the file
 with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl', 'wb') as f:

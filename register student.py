@@ -7,12 +7,26 @@ from datetime import datetime
 import pickle
 
 #registered_list
-reg_list = []
+reg_temp = []
 
 exit = False
+path_txt = 'C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.txt'
 
-with open(r'C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.txt', 'r') as fp:
-	id = len(fp.readlines())
+#check number of lines in txt file
+with open(path_txt, 'r') as fp:
+	lines = len(fp.readlines())
+
+# Serialize and save the first objects to a pkl file
+if lines == 0 :
+    with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl', 'wb') as f:
+        reg_temp.append(student("initialize", "demo", "0", 0, 0))
+        pickle.dump(reg_temp, f)
+
+#get the id of objects right
+if lines == 0 :
+    id = 0
+else:
+    id = lines - 1
 
 #loop to get students details
 while (exit == False):
@@ -24,7 +38,7 @@ while (exit == False):
     now = datetime.now()
     time = now.strftime("%H:%M:%S")
     id += 1
-    reg_list.append(student(name, major, year, time, id))
+    reg_temp.append(student(name, major, year, time, id))
 
     #print(list.name)
     print("Do you want to add more student")
@@ -35,16 +49,17 @@ while (exit == False):
         exit = True
 
 # save list into registered_students.txt file, and making a copy as txt file
-path_txt = 'C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.txt'
 student_file = open(path_txt , "a+")
-
-for i in reg_list:
+for i in reg_temp:
     student_file.write(str(i) + "\n")
 student_file.close()
 
-# Serialize and save the first objects to a file
-with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl', 'wb') as f:
-    pickle.dump(reg_list, f)  #legacy code to create first object in path_binary file 
+#leaving the dublicate initial object
+if lines == 0 :
+    reg_list = reg_temp[1:]
+else:
+    reg_list = reg_temp
+
 
 def append_registered_students(filename, new_students):
     # Deserialize the existing students
@@ -62,5 +77,5 @@ def append_registered_students(filename, new_students):
         pickle.dump(students, f)
 
 # Append new students to the file
-'''path_binary = 'C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl'
-append_registered_students(path_binary, reg_list)'''
+path_binary = 'C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl'
+append_registered_students(path_binary, reg_list)
