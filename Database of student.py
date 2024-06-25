@@ -21,15 +21,15 @@ for person in students:
 
 #function to register attendence of given id 
 def attendence(entered_id):
-    index_in_students = entered_id - 1
+    index_in_students = entered_id
     print("Last attendence: " + str(students[index_in_students].time))
     now = datetime.now()
     time = now.strftime("%H:%M:%S")
-    students[index_in_students] = time
-    print("New attencdence: " + str(students[index_in_students]))
+    students[index_in_students].time = time  # Corrected this line
+    print("New attencdence: " + str(time))
 
-#attendence(int(input("Entre your student id for attendence: ")))
+attendence(int(input("Entre your student id for attendence: ")))
 
-'''# Serialize the updated list back to the file
+# Serialize the updated list back to the file
 with open('C:\\Users\\BCS\\Documents\\Python\\I.D. card program\\registered students.pkl', 'wb') as f:
-    pickle.dump(students, f)'''
+    pickle.dump(students, f)
