@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import scrolledtext
 import Database_of_student
 import register_student
-import button3_code
+#import button3_code
 
 # Function to update current text display
 def update_current_text(event):
@@ -23,8 +23,8 @@ button1.pack(side=tk.LEFT, padx=5)
 button2 = tk.Button(button_frame, text="Register", command=lambda: register_student.run(output_box))
 button2.pack(side=tk.LEFT, padx=5)
 
-button3 = tk.Button(button_frame, text="Button 3", command=lambda: button3_code.run(output_box))
-button3.pack(side=tk.LEFT, padx=5)
+'''button3 = tk.Button(button_frame, text="Button 3", command=lambda: button3_code.run(output_box))
+button3.pack(side=tk.LEFT, padx=5)'''
 
 # Create a text input box
 text_input = tk.Entry(root, width=50)
